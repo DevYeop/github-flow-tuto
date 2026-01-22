@@ -1,36 +1,33 @@
 name: Python API & UI Test
 
-# 1. 트리거 조건: main 브랜치에 push가 발생할 때 실행
+# 1. 트리거 조건 설정
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "**"  # 모든 브랜치 push 시 실행
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "**"  # 모든 PR 생성 시 실행
+  workflow_dispatch:  # Actions 탭에서 수동 실행 버튼 활성화
 
 jobs:
   build:
-    # 실행 환경: 최신 버전 우분투 리눅스
     runs-on: ubuntu-latest
 
     steps:
-    # 2. 코드 체크아웃 (내 코드를 가상 서버로 가져옴)
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # 3. 파이썬 환경 설정 (3.10 버전)
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.10"
 
-    # 4. 필수 라이브러리 설치
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install pytest requests selenium webdriver-manager
 
-    # 5. 테스트 실행 (pytest)
-    # UI 테스트가 포함된 경우를 대비해 headless 모드로 실행되는지 확인 필요
     - name: Run tests with pytest
       run: |
         pytest
