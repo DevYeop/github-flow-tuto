@@ -7,14 +7,15 @@ def test_open_jsonplaceholder_page():
     # 1. 크롬 옵션 설정
     options = webdriver.ChromeOptions()
     
-    # [실습] 로컬에서 브라우저를 보고 싶으면 아래 한 줄을 주석 처리(#) 하세요.
+    # [실습] 로컬에서 브라우저를 보고 싶으면 아래 옵션들을 주석 처리(#) 하세요.
     # 깃헙 액션(서버)에서 돌릴 때는 반드시 이 옵션이 켜져 있어야 합니다.
+    # cli 환경이라서 크롬 브라우저를 띄울 수 없기 때문 🚨🚨🚨
     options.add_argument('--headless') 
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
-    # 2. 크롬 드라이버 실행
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    # 2. 크롬 드라이버 실행e
+    driver = webdriver.Chrome(service=Service(ChromDriverManager().install()), options=options)
 
     try:
         # 3. JSONPlaceholder 사이트 접속

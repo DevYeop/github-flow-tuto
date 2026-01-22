@@ -1,2 +1,3 @@
 .vscode
 .pytest_cache
+tests/ui/__pycache__/
