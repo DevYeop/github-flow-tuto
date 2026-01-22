@@ -1,6 +1,5 @@
 import requests
 
-# 테스트 대상 주소 (하드코딩)
 BASE_URL = "https://jsonplaceholder.typicode.com/posts"
 
 def test_check_first_post_title():
